@@ -5,7 +5,7 @@ import logoImg from '@/public/Logo.png'
 
 const Navbar = () => {
   return (
-    <nav className="w-full flex justify-between items-center sticky z-50 bg-black h-[60px] px-10">
+    <nav className="w-full flex justify-between items-center sticky top-0 z-50 bg-black h-[60px] px-10">
 
       <Link href='/' className="logo relative w-12 h-12">
         <Image 

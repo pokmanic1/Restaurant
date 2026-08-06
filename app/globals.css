@@ -21,9 +21,13 @@
     @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
 }
 
+@utility principal-gradient{
+    background: linear-gradient(to right, #09004B, #000017);
+
+}
+
 @utility text-gradient {
 background: linear-gradient(to right, #3b82f6, #ec4899);
-
 }
 
 
@@ -32,12 +36,10 @@ background: linear-gradient(to right, #3b82f6, #ec4899);
 }
 
 
-
 @utility border-gradient {
-  border: 3px solid;
-  border-image: linear-gradient(to bottom, #0059B3, #001455) 1;
+    border: 3px solid;
+    border-image: linear-gradient(to bottom, #0059B3, #001455) 1;
 }
-
 
 
 @utility radial-gradient {
