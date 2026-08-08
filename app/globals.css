@@ -22,8 +22,7 @@
 }
 
 @utility principal-gradient{
-    background: linear-gradient(to right, #09004B, #000017);
-
+background: radial-gradient(circle at center, #0e082c 0%, #030014 100%);
 }
 
 @utility text-gradient {
