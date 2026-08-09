@@ -3,27 +3,47 @@
 import React, { useState } from 'react';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    telefon: '',
-    titlu: '',
-    nota: '5',
-    recenzie: ''
-  });
+  const [telefon, setTelefon] = useState('');
+  const [titlu, setTitlu] = useState('');
+  const [nota, setNota] = useState('5');
+  const [recenzie, setRecenzie] = useState('');
+
+  const [erorTelefon, setErorTelefon] = useState('');
+  const [erorTitlu, setErorTitlu] = useState('');
+  const [erorRecenzie, setErorRecenzie] = useState('');
+
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError]=useState('')
-
-
-  const handleChange = (e:any) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value
-    }));
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    let areErori = false;
+
+    if (!telefon) {
+      setErorTelefon('Câmpul "telefon" e obligatoriu');
+      areErori = true;
+    } else {
+      setErorTelefon('');
+    }
+
+    if (!titlu) {
+      setErorTitlu('Câmpul "titlu" e obligatoriu');
+      areErori = true;
+    } else {
+      setErorTitlu('');
+    }
+
+    if (!recenzie) {
+      setErorRecenzie('Câmpul "recenzie" e obligatoriu');
+      areErori = true;
+    } else {
+      setErorRecenzie('');
+    }
+
+    if (areErori) return;
+
+    setIsSubmitting(true);
+    setIsSubmitting(false);
   };
 
   return (
@@ -33,10 +53,9 @@ const Contact = () => {
           Recenzii
         </h1>
         <div className='col-center bg-[#161616] border border-gray-700 rounded-lg py-6 px-6 max-w-[1400px] w-full md:w-[50%] shadow-xl'>
-          
-
           <form onSubmit={handleSubmit} className='w-full flex flex-col gap-4 text-white'>
-            
+
+            {/* TELEFON */}
             <div className='flex flex-col gap-1 w-full'>
               <label htmlFor='telefon' className='text-sm font-medium text-gray-300'>
                 Număr Telefon
@@ -44,15 +63,17 @@ const Contact = () => {
               <input
                 type='tel'
                 id='telefon'
-                name='telefon'
-                required
                 placeholder='07xx xxx xxx'
-                value={formData.telefon}
-                onChange={handleChange}
-                className='w-full p-3 rounded bg-[#222222] border border-gray-600 focus:border-white focus:outline-none transition'
+                value={telefon}
+                onChange={(e) => setTelefon(e.target.value)}
+                className={`w-full p-3 rounded bg-[#222222] border focus:outline-none transition ${
+                  erorTelefon ? 'border-red-600' : 'border-gray-600 focus:border-white'
+                }`}
               />
+              {erorTelefon && <p className='text-red-500 text-sm'>{erorTelefon}</p>}
             </div>
 
+            {/* TITLU */}
             <div className='flex flex-col gap-1 w-full'>
               <label htmlFor='titlu' className='text-sm font-medium text-gray-300'>
                 Titlu Recenzie
@@ -60,24 +81,25 @@ const Contact = () => {
               <input
                 type='text'
                 id='titlu'
-                name='titlu'
-                required
                 placeholder='Ex: Servicii excelente!'
-                value={formData.titlu}
-                onChange={handleChange}
-                className='w-full p-3 rounded bg-[#222222] border border-gray-600 focus:border-white focus:outline-none transition'
+                value={titlu}
+                onChange={(e) => setTitlu(e.target.value)}
+                className={`w-full p-3 rounded bg-[#222222] border focus:outline-none transition ${
+                  erorTitlu ? 'border-red-600' : 'border-gray-600 focus:border-white'
+                }`}
               />
+              {erorTitlu && <p className='text-red-500 text-sm'>{erorTitlu}</p>}
             </div>
 
+            {/* NOTA */}
             <div className='flex flex-col gap-1 w-full'>
               <label htmlFor='nota' className='text-sm font-medium text-gray-300'>
                 Notă (1 - 5)
               </label>
               <select
                 id='nota'
-                name='nota'
-                value={formData.nota}
-                onChange={handleChange}
+                value={nota}
+                onChange={(e) => setNota(e.target.value)}
                 className='w-full p-3 rounded bg-[#222222] border border-gray-600 focus:border-white focus:outline-none transition cursor-pointer'
               >
                 <option value='5'>5 ★ - Excelent</option>
@@ -88,26 +110,24 @@ const Contact = () => {
               </select>
             </div>
 
+            {/* RECENZIE */}
             <div className='flex flex-col gap-1 w-full'>
               <label htmlFor='recenzie' className='text-sm font-medium text-gray-300'>
                 Recenzia ta
               </label>
               <textarea
                 id='recenzie'
-                name='recenzie'
                 rows={4}
-                required
                 placeholder='Scrie părerea ta aici...'
-                value={formData.recenzie}
-                onChange={handleChange}
-                className='w-full p-3 rounded bg-[#222222] border border-gray-600 focus:border-white focus:outline-none transition resize-none'
+                value={recenzie}
+                onChange={(e) => setRecenzie(e.target.value)}
+                className={`w-full p-3 rounded bg-[#222222] border focus:outline-none transition resize-none ${
+                  erorRecenzie ? 'border-red-600' : 'border-gray-600 focus:border-white'
+                }`}
               />
+              {erorRecenzie && <p className='text-red-500 text-sm'>{erorRecenzie}</p>}
             </div>
-              {error && 
-              <div className='flex-center  mt-2 w-full border border-red-500 bg-red-300 text-black font-semibold py-1 px-4 rounded  '>
-                  {error}
-              </div>
-              }
+
             <button
               type='submit'
               disabled={isSubmitting}
@@ -117,7 +137,6 @@ const Contact = () => {
             </button>
 
           </form>
-
         </div>
       </div>
     </section>
