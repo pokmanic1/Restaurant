@@ -11,6 +11,8 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError]=useState('')
+
+
   const handleChange = (e:any) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -21,23 +23,7 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
-    try {
-      const response = await fetch('/api/reviews', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
-
-      if (response.ok) {
-        setFormData({ telefon: '', titlu: '', nota: '5', recenzie: '' });
-      }
-    } catch (error) {
-      console.error('Eroare la trimiterea recenziei:', error);
-    } finally {
-      setIsSubmitting(false);
-    }
   };
 
   return (
@@ -48,6 +34,7 @@ const Contact = () => {
         </h1>
         <div className='col-center bg-[#161616] border border-gray-700 rounded-lg py-6 px-6 max-w-[1400px] w-full md:w-[50%] shadow-xl'>
           
+
           <form onSubmit={handleSubmit} className='w-full flex flex-col gap-4 text-white'>
             
             <div className='flex flex-col gap-1 w-full'>
@@ -116,7 +103,11 @@ const Contact = () => {
                 className='w-full p-3 rounded bg-[#222222] border border-gray-600 focus:border-white focus:outline-none transition resize-none'
               />
             </div>
-
+              {error && 
+              <div className='flex-center  mt-2 w-full border border-red-500 bg-red-300 text-black font-semibold py-1 px-4 rounded  '>
+                  {error}
+              </div>
+              }
             <button
               type='submit'
               disabled={isSubmitting}
