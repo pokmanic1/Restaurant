@@ -39,7 +39,7 @@ const [sectionShow, setSectionShow] = useState<number>(0);
         {/* Carne = index 0 */}
         {/* -------------------------------------------------------------------------------------------- */}
 
-        <div style={{order: getOrder(0)}} className={`col-center  w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-black text-white border border-gray-700 rounded-lg px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6  shadow-lg 
+        <div style={{order: getOrder(0)}} className={`col-center  w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-[#161616] text-white border border-gray-700 rounded-lg px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6  shadow-xl shadow-blue-900/30 hover:shadow-blue-900/60   
           ${sectionShow===5 || sectionShow===0 || sectionShow===1?'flex':'hidden'}
           ${sectionShow===0 ? 'scale-105':'scale-75'}`}>
 
@@ -64,7 +64,7 @@ const [sectionShow, setSectionShow] = useState<number>(0);
         {/* Pizza = index 1 */}
         {/* -------------------------------------------------------------------------------------------- */}
 
-        <div style={{order: getOrder(1)}} className={`col-center  w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-black text-white border border-gray-700 rounded-lg px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6 shadow-lg  
+        <div style={{order: getOrder(1)}} className={`col-center  w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-[#161616] text-white border border-gray-700 rounded-lg px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6 shadow-xl shadow-blue-900/30 hover:shadow-blue-900/60   
           ${sectionShow===0 || sectionShow===1 || sectionShow===2?'flex':'hidden'}
           ${sectionShow===1 ? 'scale-105':'scale-75'}`}>
 
@@ -89,7 +89,7 @@ const [sectionShow, setSectionShow] = useState<number>(0);
         {/* Mic Dejun = index 2 */}
         {/* -------------------------------------------------------------------------------------------- */}
 
-        <div style={{order: getOrder(2)}} className={`col-center  w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-black text-white border border-gray-700 rounded-lg px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6 shadow-lg  
+        <div style={{order: getOrder(2)}} className={`col-center  w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-[#161616] text-white border border-gray-700 rounded-lg px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6 shadow-xl shadow-blue-900/30 hover:shadow-blue-900/60    
           ${sectionShow===1 || sectionShow===2 || sectionShow===3?'flex':'hidden'}
           ${sectionShow===2 ? 'scale-105':'scale-75'}`}>
 
@@ -114,7 +114,7 @@ const [sectionShow, setSectionShow] = useState<number>(0);
         {/* Pasta = index 3 */}
         {/* -------------------------------------------------------------------------------------------- */}
 
-        <div style={{order: getOrder(3)}} className={`col-center  w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-black text-white border border-gray-700 rounded-lg px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6 shadow-lg  
+        <div style={{order: getOrder(3)}} className={`col-center  w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-[#161616] text-white border border-gray-700 rounded-lg px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6 shadow-xl shadow-blue-900/30 hover:shadow-blue-900/60     
           ${sectionShow===2 || sectionShow===3 || sectionShow===4?'flex':'hidden'}
           ${sectionShow===3 ? 'scale-105':'scale-75'}`}>
 
@@ -139,7 +139,7 @@ const [sectionShow, setSectionShow] = useState<number>(0);
         {/* Salaata = index 4 */}
         {/* -------------------------------------------------------------------------------------------- */}
 
-        <div style={{order: getOrder(4)}} className={`col-center  w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-black text-white border border-gray-700 rounded-lg px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6 shadow-lg  
+        <div style={{order: getOrder(4)}} className={`col-center  w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-[#161616] text-white border border-gray-700 rounded-lg px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6 shadow-xl shadow-blue-900/30 hover:shadow-blue-900/60   
           ${sectionShow===3 || sectionShow===4 || sectionShow===5?'flex':'hidden'}
           ${sectionShow===4 ? 'scale-105':'scale-75'}`}>
 
@@ -164,7 +164,7 @@ const [sectionShow, setSectionShow] = useState<number>(0);
         {/* Supe = index 5 */}
         {/* -------------------------------------------------------------------------------------------- */}
 
-        <div style={{order: getOrder(5)}} className={`col-center  w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-black text-white border border-gray-700 rounded-lg px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6 shadow-lg  
+        <div style={{order: getOrder(5)}} className={`col-center  w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-[#161616] text-white border border-gray-700 rounded-lg px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6 shadow-xl shadow-blue-900/30 hover:shadow-blue-900/60     
           ${sectionShow===4 || sectionShow===5 || sectionShow===0?'flex':'hidden'}
           ${sectionShow===5 ? 'scale-105':'scale-75'}`}>
 

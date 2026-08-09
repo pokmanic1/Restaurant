@@ -25,6 +25,10 @@
 background: radial-gradient(circle at center, #0e082c 0%, #030014 100%);
 }
 
+@utility h1-style{
+    @apply text-center text-white text-[80px] font-serif-inria my-auto 
+}
+
 @utility text-gradient {
 background: linear-gradient(to right, #3b82f6, #ec4899);
 }
