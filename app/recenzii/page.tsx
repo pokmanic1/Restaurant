@@ -19,7 +19,7 @@ const Recenzii = () => {
 
     let areErori = false;
 
-   
+
 
     if (!titlu) {
       setErorTitlu('Câmpul "titlu" e obligatoriu');
@@ -61,9 +61,8 @@ const Recenzii = () => {
                 placeholder=''
                 value={nume}
                 onChange={(e) => setNume(e.target.value)}
-                className={`w-full p-3 rounded bg-[#222222] border focus:outline-none transition ${
-                  erornume ? 'border-red-600' : 'border-gray-600 focus:border-white'
-                }`}
+                className={`w-full p-3 rounded bg-[#222222] border focus:outline-none transition ${erornume ? 'border-red-600' : 'border-gray-600 focus:border-white'
+                  }`}
               />
               {erornume && <p className='text-red-500 text-sm'>{erornume}</p>}
             </div>
@@ -79,9 +78,8 @@ const Recenzii = () => {
                 placeholder=''
                 value={titlu}
                 onChange={(e) => setTitlu(e.target.value)}
-                className={`w-full p-3 rounded bg-[#222222] border focus:outline-none transition ${
-                  erorTitlu ? 'border-red-600' : 'border-gray-600 focus:border-white'
-                }`}
+                className={`w-full p-3 rounded bg-[#222222] border focus:outline-none transition ${erorTitlu ? 'border-red-600' : 'border-gray-600 focus:border-white'
+                  }`}
               />
               {erorTitlu && <p className='text-red-500 text-sm'>{erorTitlu}</p>}
             </div>
@@ -116,9 +114,8 @@ const Recenzii = () => {
                 placeholder='Scrie părerea ta aici...'
                 value={recenzie}
                 onChange={(e) => setRecenzie(e.target.value)}
-                className={`w-full p-3 rounded bg-[#222222] border focus:outline-none transition resize-none ${
-                  erorRecenzie ? 'border-red-600' : 'border-gray-600 focus:border-white'
-                }`}
+                className={`w-full p-3 rounded bg-[#222222] border focus:outline-none transition resize-none ${erorRecenzie ? 'border-red-600' : 'border-gray-600 focus:border-white'
+                  }`}
               />
               {erorRecenzie && <p className='text-red-500 text-sm'>{erorRecenzie}</p>}
             </div>

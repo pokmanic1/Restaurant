@@ -33,3 +33,5 @@ const RecenzieSchema = new Schema<IRecenzie>(
 )
 
 const Recenzie = models.Recenzie || model<IRecenzie>('Recenzie', RecenzieSchema);
+
+export default Recenzie
