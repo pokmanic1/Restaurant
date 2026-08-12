@@ -10,7 +10,7 @@ const Contact = () => {
         
         <div className="relative min-h-[400px] rounded-2xl overflow-hidden bg-slate-900/40 backdrop-blur-md border border-white/10 shadow-2xl flex-center text-white/50 text-sm font-medium">
 
-            <span>
+            <span>  
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52823.242480449946!2d28.160000625026832!3d45.90771685604771!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b65c95ca29ef7d%3A0x254c4e01d94d6250!2sCahul%2C%20Moldova!5e0!3m2!1sro!2sit!4v1786427709694!5m2!1sro!2sit"
                 width="600"

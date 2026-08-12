@@ -12,7 +12,7 @@ const RecenzieSchema = new Schema<IRecenzie>(
     {
         nume: {
             type: String,
-            required: true
+            required: false
         },
         titlu: {
             type: String,
