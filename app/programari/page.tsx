@@ -3,24 +3,25 @@
 import React, { useState } from 'react';
 
 const Programari = () => {
+
+  const timeOptions = [
+    "16:00", "16:30", "17:00", "17:30",
+    "18:00", "18:30", "19:00", "19:30",
+    "20:00", "20:30", "21:00", "21:30", "22:00"
+  ];
+
   const [form, setForm] = useState({
     nume: '',
     telefon: '',
     data: '',
     persoane: '',
     ora: '',
+    locatia: ''
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e:any) => {
     const { name, value } = e.target;
-    console.log('e')
-    console.log(e)
-    console.log("e.target")
-    console.log(e.target)
-    console.log("e.target value")
-    console.log(e.target.value)
-    console.log("e.target name")
-    console.log(e.target.name)
+
     setForm((prev) => ({
       ...prev,
       [name]: value,
@@ -71,7 +72,7 @@ const Programari = () => {
             />
           </div>
 
-          <div className="grid w-full grid-cols-1 sm:grid-cols-3 gap-5">
+          <div className="grid w-full grid-cols-1 sm:grid-cols-2 gap-5">
 
             {/* Data */}
             <div className="flex flex-col gap-1.5 w-full">
@@ -101,26 +102,44 @@ const Programari = () => {
                 max={20}
                 value={form.persoane}
                 onChange={handleChange}
-                className='w-full p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-xl text-white placeholder-slate-400 focus:border-white/30 focus:bg-white/10 focus:outline-none transition duration-300'
-              />
+                className='w-full p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-xl text-white placeholder-slate-400 focus:border-white/30 focus:bg-white/10 focus:outline-none transition duration-300' />
             </div>
+
+          </div>
+
+
+
+          <div className="grid w-full grid-cols-1 sm:grid-cols-2 gap-5">
 
             {/* Ora */}
             <div className="flex flex-col gap-1.5 w-full">
               <label htmlFor="ora" className='text-sm font-medium text-white/90'>
                 Ora
               </label>
-              <input
-                type="text"
-                id="ora"
+              <select
                 name="ora"
+                id="ora"
                 value={form.ora}
                 onChange={handleChange}
-                className='w-full p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-xl text-white placeholder-slate-400 focus:border-white/30 focus:bg-white/10 focus:outline-none transition duration-300'
-              />
+                className='w-full p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-xl text-white placeholder-slate-400 focus:border-white/30 focus:bg-white/10 focus:outline-none transition duration-300'>
+
+                <option value="" disabled className="bg-slate-900 text-slate-400">
+                  Selecteaza ora
+                </option>
+                {timeOptions.map((time) => (
+                  <option key={time} value={time} className="bg-slate-900 text-slate-400">
+                    {time}
+                  </option>
+                ))}
+
+              </select>
+
             </div>
 
           </div>
+
+
+
 
           <button
             type='submit'
