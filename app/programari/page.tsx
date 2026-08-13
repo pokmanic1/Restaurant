@@ -2,13 +2,17 @@
 
 import React, { useState } from 'react';
 
+
+const timeOptions = [
+  "16:00", "16:30", "17:00", "17:30",
+  "18:00", "18:30", "19:00", "19:30",
+  "20:00", "20:30", "21:00", "21:30", "22:00"
+];
+
+
 const Programari = () => {
 
-  const timeOptions = [
-    "16:00", "16:30", "17:00", "17:30",
-    "18:00", "18:30", "19:00", "19:30",
-    "20:00", "20:30", "21:00", "21:30", "22:00"
-  ];
+  const [error,setError]=useState({})
 
   const [form, setForm] = useState({
     nume: '',
@@ -19,7 +23,7 @@ const Programari = () => {
     locatia: ''
   });
 
-  const handleChange = (e:any) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
 
     setForm((prev) => ({
@@ -135,6 +139,31 @@ const Programari = () => {
               </select>
 
             </div>
+
+            <div className="flex flex-col gap-1.5 w-full">
+              <label htmlFor="persoane" className='text-sm font-medium text-white/90'>
+                Locatia
+              </label>
+              <select
+                name="locatia"
+                id="locatia"
+                value={form.locatia}
+                onChange={handleChange}
+                className='w-full p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-xl text-white placeholder-slate-400 focus:border-white/30 focus:bg-white/10 focus:outline-none transition duration-300'>
+
+                <option value="" disabled className="bg-slate-900 text-slate-400">
+                  Locatia
+                </option>
+                <option value="Înăuntru" className="bg-slate-900 text-slate-400">
+                  Înăuntru
+                </option>
+                <option value="Afară" className="bg-slate-900 text-slate-400">
+                  Afară
+                </option>
+
+              </select>
+            </div>
+
 
           </div>
 
