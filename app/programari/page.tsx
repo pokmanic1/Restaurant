@@ -1,18 +1,22 @@
 'use client';
 
 import React, { useState } from 'react';
-
-
 const timeOptions = [
   "16:00", "16:30", "17:00", "17:30",
   "18:00", "18:30", "19:00", "19:30",
   "20:00", "20:30", "21:00", "21:30", "22:00"
 ];
-
-
 const Programari = () => {
 
-  const [error,setError]=useState({})
+  const [error, setError] = useState({
+    numeErr: '',
+    telefonErr: '',
+    dataErr: '',
+    persoaneErr: '',
+    oraErr: '',
+    locatiaErr: ''
+
+  });
 
   const [form, setForm] = useState({
     nume: '',
@@ -23,7 +27,7 @@ const Programari = () => {
     locatia: ''
   });
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
 
     setForm((prev) => ({
@@ -34,7 +38,47 @@ const Programari = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form data submitted:', form);
+
+    let valid = true;
+    const newErrors = {
+      numeErr: '',
+      telefonErr: '',
+      dataErr: '',
+      persoaneErr: '',
+      oraErr: '',
+      locatiaErr: ''
+    };
+
+    if (!form.nume.trim()) {
+      newErrors.numeErr = 'Numele este obligatoriu.';
+      valid = false;
+    }
+    if (!form.telefon.trim()) {
+      newErrors.telefonErr = 'Numărul de telefon este obligatoriu.';
+      valid = false;
+    }
+    if (!form.data) {
+      newErrors.dataErr = 'Data este obligatorie.';
+      valid = false;
+    }
+    if (!form.persoane) {
+      newErrors.persoaneErr = 'Numărul de persoane este obligatoriu.';
+      valid = false;
+    }
+    if (!form.ora) {
+      newErrors.oraErr = 'Ora este obligatorie.';
+      valid = false;
+    }
+    if (!form.locatia) {
+      newErrors.locatiaErr = 'Locația este obligatorie.';
+      valid = false;
+    }
+
+    setError(newErrors);
+
+    if (valid) {
+      console.log('Form data submitted:', form);
+    }
   };
 
   return (
@@ -46,22 +90,22 @@ const Programari = () => {
       <div className='rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-6 sm:p-8 max-w-[1200px] w-[90%] md:w-[50%] shadow-2xl text-white'>
         <form onSubmit={handleSubmit} className='w-full flex flex-col gap-5 text-white'>
 
-          {/* Nume */}
           <div className='flex flex-col gap-1.5 w-full'>
             <label htmlFor='nume' className='text-sm font-medium text-white/90'>
               Numele
             </label>
             <input
+
               type='text'
               id='nume'
               name='nume'
               value={form.nume}
               onChange={handleChange}
-              className='w-full p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md text-white placeholder-slate-400 focus:border-white/30 focus:bg-white/10 focus:outline-none transition duration-300'
+              className={`w-full p-3 rounded-xl bg-white/5 border  backdrop-blur-md text-white placeholder-slate-400 ${error.numeErr?"border-red-500/80 focus:border-red-500":'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition duration-300`}
             />
+            {error.numeErr && <p className='text-red-400 text-sm mt-0.5'>{error.numeErr}</p>}
           </div>
 
-          {/* Telefon */}
           <div className="flex flex-col gap-1.5 w-full">
             <label htmlFor="telefon" className='text-sm font-medium text-white/90'>
               Telefon
@@ -71,14 +115,15 @@ const Programari = () => {
               id="telefon"
               name="telefon"
               value={form.telefon}
+
               onChange={handleChange}
-              className='w-full p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-xl text-white placeholder-slate-400 focus:border-white/30 focus:bg-white/10 focus:outline-none transition duration-300'
+              className={`w-full p-3 rounded-xl bg-white/5 border  backdrop-blur-xl text-white placeholder-slate-400 ${error.telefonErr?"border-red-500/80 focus:border-red-500":'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition duration-300`}
             />
+            {error.telefonErr && <p className='text-red-400 text-sm mt-0.5'>{error.telefonErr}</p>}
           </div>
 
           <div className="grid w-full grid-cols-1 sm:grid-cols-2 gap-5">
 
-            {/* Data */}
             <div className="flex flex-col gap-1.5 w-full">
               <label htmlFor="data" className='text-sm font-medium text-white/90'>
                 Data
@@ -89,11 +134,12 @@ const Programari = () => {
                 name="data"
                 value={form.data}
                 onChange={handleChange}
-                className='w-full p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-xl text-white placeholder-slate-400 focus:border-white/30 focus:bg-white/10 focus:outline-none transition duration-300'
+                className={`w-full p-3 rounded-xl bg-white/5 border  backdrop-blur-xl text-white placeholder-slate-400 ${error.dataErr?"border-red-500/80 focus:border-red-500":'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition duration-300`}
+
               />
+              {error.dataErr && <p className='text-red-400 text-sm mt-0.5'>{error.dataErr}</p>}
             </div>
 
-            {/* Persoane */}
             <div className="flex flex-col gap-1.5 w-full">
               <label htmlFor="persoane" className='text-sm font-medium text-white/90'>
                 Număr persoane
@@ -106,16 +152,16 @@ const Programari = () => {
                 max={20}
                 value={form.persoane}
                 onChange={handleChange}
-                className='w-full p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-xl text-white placeholder-slate-400 focus:border-white/30 focus:bg-white/10 focus:outline-none transition duration-300' />
+                className={`w-full p-3 rounded-xl bg-white/5 border  backdrop-blur-xl text-white placeholder-slate-400 ${error.persoaneErr?"border-red-500/80 focus:border-red-500":'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition duration-300`}
+              />
+              {error.persoaneErr && <p className='text-red-400 text-sm mt-0.5'>{error.persoaneErr}</p>}
+
             </div>
 
           </div>
 
-
-
           <div className="grid w-full grid-cols-1 sm:grid-cols-2 gap-5">
 
-            {/* Ora */}
             <div className="flex flex-col gap-1.5 w-full">
               <label htmlFor="ora" className='text-sm font-medium text-white/90'>
                 Ora
@@ -125,34 +171,33 @@ const Programari = () => {
                 id="ora"
                 value={form.ora}
                 onChange={handleChange}
-                className='w-full p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-xl text-white placeholder-slate-400 focus:border-white/30 focus:bg-white/10 focus:outline-none transition duration-300'>
-
+                className={`w-full p-3 rounded-xl bg-white/5 border  backdrop-blur-xl text-white placeholder-slate-400 ${error.oraErr?"border-red-500/80 focus:border-red-500":'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition duration-300`}>
                 <option value="" disabled className="bg-slate-900 text-slate-400">
-                  Selecteaza ora
+                  Selectează ora
                 </option>
+
                 {timeOptions.map((time) => (
                   <option key={time} value={time} className="bg-slate-900 text-slate-400">
                     {time}
                   </option>
                 ))}
-
               </select>
-
+              {error.oraErr && <p className='text-red-400 text-sm mt-0.5'>{error.oraErr}</p>}
             </div>
 
             <div className="flex flex-col gap-1.5 w-full">
-              <label htmlFor="persoane" className='text-sm font-medium text-white/90'>
-                Locatia
+              <label htmlFor="locatia" className='text-sm font-medium text-white/90'>
+                Locația
               </label>
               <select
                 name="locatia"
                 id="locatia"
                 value={form.locatia}
                 onChange={handleChange}
-                className='w-full p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-xl text-white placeholder-slate-400 focus:border-white/30 focus:bg-white/10 focus:outline-none transition duration-300'>
+                className={`w-full p-3 rounded-xl bg-white/5 border  backdrop-blur-xl text-white placeholder-slate-400 ${error.locatiaErr?"border-red-500/80 focus:border-red-500":'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition duration-300`}>
 
                 <option value="" disabled className="bg-slate-900 text-slate-400">
-                  Locatia
+                  Selectează locația
                 </option>
                 <option value="Înăuntru" className="bg-slate-900 text-slate-400">
                   Înăuntru
@@ -160,20 +205,17 @@ const Programari = () => {
                 <option value="Afară" className="bg-slate-900 text-slate-400">
                   Afară
                 </option>
-
               </select>
+              {error.locatiaErr && <p className='text-red-400 text-sm mt-0.5'>{error.locatiaErr}</p>}
             </div>
 
-
           </div>
-
-
-
 
           <button
             type='submit'
             className='flex-center mt-2 w-full bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 shadow-lg disabled:opacity-50 cursor-pointer'
           >
+
             Trimite Programarea
           </button>
         </form>
@@ -181,5 +223,6 @@ const Programari = () => {
     </section>
   );
 };
-
 export default Programari;
+
+
