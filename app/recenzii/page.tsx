@@ -18,25 +18,30 @@ const Recenzii = () => {
     e.preventDefault();
 
     let areErori = false;
-
-    if (!titlu) {
-      setErorTitlu('Câmpul "titlu" e obligatoriu');
-      areErori = true;
-    } else {
-      setErorTitlu('');
-    }
-
-    if (!recenzie) {
-      setErorRecenzie('Câmpul "recenzie" e obligatoriu');
-      areErori = true;
-    } else {
-      setErorRecenzie('');
-    }
-
+    if (!titlu) { setErorTitlu('Câmpul "titlu" e obligatoriu'); areErori = true; } else setErorTitlu('');
+    if (!recenzie) { setErorRecenzie('Câmpul "recenzie" e obligatoriu'); areErori = true; } else setErorRecenzie('');
     if (areErori) return;
 
     setIsSubmitting(true);
-    setIsSubmitting(false);
+    try {
+      const res = await fetch('/api/recenzie', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nume, titlu, nota, recenzie }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || 'Eroare la trimiterea recenziei');
+      }
+
+      setNume(''); setTitlu(''); setNota('5'); setRecenzie('');
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
