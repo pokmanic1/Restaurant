@@ -12,7 +12,8 @@ const RecenzieSchema = new Schema<IRecenzie>(
     {
         nume: {
             type: String,
-            required: false
+            required: false,
+            default: 'Anonim'
         },
         titlu: {
             type: String,
