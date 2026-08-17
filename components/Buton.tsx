@@ -6,10 +6,10 @@ import { motion } from 'framer-motion';
 
 const MotionLink = motion(Link);
 
-const BlueButon = () => {
+const BlueButon = (props:any) => {
     return (
         <MotionLink
-            href="/meniu/pizza"
+            href={props.link}
 
             whileHover={{ scale: 1.05, }}
             whileTap={{ scale: 0.9, }}

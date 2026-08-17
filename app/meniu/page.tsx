@@ -56,7 +56,7 @@ const [sectionShow, setSectionShow] = useState<number>(0);
             />
           </div>
 
-          <BlueButon />
+          <BlueButon link="/meniu/carne"/>
         </div>
 
 
@@ -81,7 +81,7 @@ const [sectionShow, setSectionShow] = useState<number>(0);
             />
           </div>
 
-          <BlueButon />
+          <BlueButon link="/meniu/pizza" />
         </div>
 
 
@@ -106,7 +106,7 @@ const [sectionShow, setSectionShow] = useState<number>(0);
             />
           </div>
 
-          <BlueButon />
+          <BlueButon link="/meniu/micdejun" />
         </div>
 
 
@@ -131,7 +131,7 @@ const [sectionShow, setSectionShow] = useState<number>(0);
             />
           </div>
 
-          <BlueButon />
+          <BlueButon link="/meniu/pasta"/>
         </div>
 
 
@@ -150,13 +150,13 @@ const [sectionShow, setSectionShow] = useState<number>(0);
           <div className="relative w-full h-[140px] sm:h-[170px] md:h-[220px]  mb-6 overflow-hidden rounded border border-gray-600">
             <Image
               src="/meniu/Salat.png"
-              alt="Salaata"
+              alt="Salata"
               fill
               className="object-cover"
             />
           </div>
 
-          <BlueButon />
+          <BlueButon link="/meniu/salata"/>
         </div>
 
 
@@ -181,7 +181,7 @@ const [sectionShow, setSectionShow] = useState<number>(0);
             />
           </div>
 
-          <BlueButon />
+          <BlueButon link="/meniu/supe" />
         </div>
 
 

@@ -1,5 +1,6 @@
 'use client';
 
+import { div } from 'framer-motion/client';
 import React, { useState } from 'react';
 
 const Recenzii = () => {
@@ -13,7 +14,7 @@ const Recenzii = () => {
   const [erorRecenzie, setErorRecenzie] = useState('');
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-
+const [errGeneral,setErrGeneral]=useState('')
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -33,6 +34,7 @@ const Recenzii = () => {
       const data = await res.json();
 
       if (!res.ok) {
+        setErrGeneral(data.message)
         throw new Error(data.message || 'Eroare la trimiterea recenziei');
       }
 
@@ -122,6 +124,8 @@ const Recenzii = () => {
               />
               {erorRecenzie && <p className='text-red-400 text-sm mt-0.5'>{erorRecenzie}</p>}
             </div>
+                   {errGeneral && <div className='text-black border-2 rounded-lg border-red-600  text-center w-full bg-red-300 py-1 text-sm mt-0.5 font-semibold'>{errGeneral}</div>}
+
 
             <button
               type='submit'
