@@ -74,6 +74,21 @@ const Programari = () => {
       valid = false;
     }
 
+    try {
+      const res = fetch('/api/programari', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ form})
+      })
+
+      const data=await res.json()
+    } catch (err) {
+
+    }
+
+
+
+
     setError(newErrors);
 
     if (valid) {
@@ -101,7 +116,7 @@ const Programari = () => {
               name='nume'
               value={form.nume}
               onChange={handleChange}
-              className={`w-full p-3 rounded-xl bg-white/5 border  backdrop-blur-md text-white placeholder-slate-400 ${error.numeErr?"border-red-500/80 focus:border-red-500":'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition duration-300`}
+              className={`w-full p-3 rounded-xl bg-white/5 border  backdrop-blur-md text-white placeholder-slate-400 ${error.numeErr ? "border-red-500/80 focus:border-red-500" : 'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition duration-300`}
             />
             {error.numeErr && <p className='text-red-400 text-sm mt-0.5'>{error.numeErr}</p>}
           </div>
@@ -117,7 +132,7 @@ const Programari = () => {
               value={form.telefon}
 
               onChange={handleChange}
-              className={`w-full p-3 rounded-xl bg-white/5 border  backdrop-blur-xl text-white placeholder-slate-400 ${error.telefonErr?"border-red-500/80 focus:border-red-500":'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition duration-300`}
+              className={`w-full p-3 rounded-xl bg-white/5 border  backdrop-blur-xl text-white placeholder-slate-400 ${error.telefonErr ? "border-red-500/80 focus:border-red-500" : 'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition duration-300`}
             />
             {error.telefonErr && <p className='text-red-400 text-sm mt-0.5'>{error.telefonErr}</p>}
           </div>
@@ -134,7 +149,7 @@ const Programari = () => {
                 name="data"
                 value={form.data}
                 onChange={handleChange}
-                className={`w-full p-3 rounded-xl bg-white/5 border  backdrop-blur-xl text-white placeholder-slate-400 ${error.dataErr?"border-red-500/80 focus:border-red-500":'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition duration-300`}
+                className={`w-full p-3 rounded-xl bg-white/5 border  backdrop-blur-xl text-white placeholder-slate-400 ${error.dataErr ? "border-red-500/80 focus:border-red-500" : 'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition duration-300`}
 
               />
               {error.dataErr && <p className='text-red-400 text-sm mt-0.5'>{error.dataErr}</p>}
@@ -152,7 +167,7 @@ const Programari = () => {
                 max={20}
                 value={form.persoane}
                 onChange={handleChange}
-                className={`w-full p-3 rounded-xl bg-white/5 border  backdrop-blur-xl text-white placeholder-slate-400 ${error.persoaneErr?"border-red-500/80 focus:border-red-500":'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition duration-300`}
+                className={`w-full p-3 rounded-xl bg-white/5 border  backdrop-blur-xl text-white placeholder-slate-400 ${error.persoaneErr ? "border-red-500/80 focus:border-red-500" : 'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition duration-300`}
               />
               {error.persoaneErr && <p className='text-red-400 text-sm mt-0.5'>{error.persoaneErr}</p>}
 
@@ -171,7 +186,7 @@ const Programari = () => {
                 id="ora"
                 value={form.ora}
                 onChange={handleChange}
-                className={`w-full p-3 rounded-xl bg-white/5 border  backdrop-blur-xl text-white placeholder-slate-400 ${error.oraErr?"border-red-500/80 focus:border-red-500":'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition duration-300`}>
+                className={`w-full p-3 rounded-xl bg-white/5 border  backdrop-blur-xl text-white placeholder-slate-400 ${error.oraErr ? "border-red-500/80 focus:border-red-500" : 'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition duration-300`}>
                 <option value="" disabled className="bg-slate-900 text-slate-400">
                   Selectează ora
                 </option>
@@ -194,7 +209,7 @@ const Programari = () => {
                 id="locatia"
                 value={form.locatia}
                 onChange={handleChange}
-                className={`w-full p-3 rounded-xl bg-white/5 border  backdrop-blur-xl text-white placeholder-slate-400 ${error.locatiaErr?"border-red-500/80 focus:border-red-500":'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition duration-300`}>
+                className={`w-full p-3 rounded-xl bg-white/5 border  backdrop-blur-xl text-white placeholder-slate-400 ${error.locatiaErr ? "border-red-500/80 focus:border-red-500" : 'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition duration-300`}>
 
                 <option value="" disabled className="bg-slate-900 text-slate-400">
                   Selectează locația

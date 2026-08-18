@@ -458,16 +458,16 @@ const CategorieMeniuPage = () => {
               </div>
             </div>
 
-            <h3 className='text-xl font-semibold tracking-wide text-white/90 group-hover:text-white mb-2 leading-tight min-h-[48px] flex items-center'>
+            <h3 className='text-xl text-center font-semibold tracking-wide text-white/90 group-hover:text-white mb-2 leading-tight min-h-[48px] flex items-center'>
               {preparat.nume}
             </h3>
 
-            <div className='flex items-end justify-between gap-3 mt-auto pt-2 border-t border-white/10'>
-              <p className='text-xs text-slate-300 line-clamp-3 leading-relaxed flex-1'>
+            <div className='flex flex-col sm:flex-row items-end justify-between gap-3 mt-auto pt-2 border-t  border-white/10'>
+              <p className='text-xs text-slate-300 line-clamp-3 leading-relaxed flex-1 text-center'>
                 {preparat.ingredient}
               </p>
 
-              <div className='shrink-0 bg-white/15 backdrop-blur-md border border-white/20 px-3.5 py-2 rounded-xl text-white font-bold text-base sm:text-lg tracking-wider text-center group-hover:bg-white/20 transition-colors'>
+              <div className='mx-auto shrink-0 bg-white/15 backdrop-blur-md border border-white/20 px-3.5 py-2 rounded-xl text-white font-bold text-base sm:text-lg tracking-wider text-center group-hover:bg-white/20 transition-colors'>
                 {preparat.pret} <span className='text-xs font-normal text-white/80'>LEI</span>
               </div>
             </div>

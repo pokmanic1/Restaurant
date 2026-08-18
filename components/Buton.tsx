@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 const MotionLink = motion(Link);
 
-const BlueButon = (props:any) => {
+const BlueButon = (props: any) => {
     return (
         <MotionLink
             href={props.link}
@@ -16,9 +16,21 @@ const BlueButon = (props:any) => {
             transition={{ type: "spring", damping: 7, stiffness: 300 }}
             className="inline-block bg-[#00043B] hover:bg-[#0c005e] text-[10px] sm:text-[14px] md:text-[16px] text-white font-serif px-3 sm:px-4 md:px-5 lg:px-6 py-1 rounded border border-blue-400/30 transition-colors"
         >
-            Vezi mai mult
+            {props.continut}
+        </MotionLink>
+    );
+};
+const WhiteButon = (props: any) => {
+    return (
+        <MotionLink
+            href={props.link}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: 'spring', damping: 7, stiffness: 300 }}
+            className="inline-block bg-[#ebebeb] hover:bg-[#d7d7d7] text-[10px] sm:text-[14px] md:text-[16px] text-black font-serif px-3 sm:px-4 md:px-5 lg:px-6 py-1 rounded border border-gray-600 transition-colors"        >
+            {props.continut}
         </MotionLink>
     );
 };
 
-export default BlueButon;
+export { BlueButon, WhiteButon };

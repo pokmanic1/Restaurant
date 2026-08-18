@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import BlueButon from '@/components/Buton'
+import {BlueButon} from '@/components/Buton'
 import { section } from 'framer-motion/client'
 
 const Meniu = () => {
@@ -39,24 +39,24 @@ const [sectionShow, setSectionShow] = useState<number>(0);
         {/* Carne = index 0 */}
         {/* -------------------------------------------------------------------------------------------- */}
 
-        <div style={{order: getOrder(0)}} className={`group col-center  w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-white/5 backdrop-blur-md border border-white/10 text-white rounded-2xl px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6 shadow-2xl transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:shadow-lg   
+        <div style={{order: getOrder(0)}} className={`col-center  w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-white/5  text-white border border-gray-700 rounded-lg px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6 shadow-2xl hover:border-white/20 hover:bg-white/10 
           ${sectionShow===5 || sectionShow===0 || sectionShow===1?'flex':'hidden'}
           ${sectionShow===0 ? 'scale-105':'scale-75'}`}>
 
-          <h2 className="text-lg sm:text-xl md:text-2xl font-semibold tracking-wide text-white/90 group-hover:text-white mb-4">
+          <h2 className="text-lg sm:text-xl md:text-2xl font-serif tracking-wide mb-4">
             Carne
           </h2>
 
-          <div className="relative w-full h-[140px] sm:h-[170px] md:h-[220px]  mb-6 overflow-hidden rounded-xl border border-white/10 bg-slate-900/40">
+          <div className="relative w-full h-[140px] sm:h-[170px] md:h-[220px]  mb-6 overflow-hidden rounded border border-gray-600">
             <Image
               src="/meniu/Carne.png"
               alt="Carne"
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className="object-cover"
             />
           </div>
 
-          <BlueButon link="/meniu/carne"/>
+          <BlueButon continut="Vezi mai mult" link="/meniu/carne" />
         </div>
 
 
@@ -64,24 +64,24 @@ const [sectionShow, setSectionShow] = useState<number>(0);
         {/* Pizza = index 1 */}
         {/* -------------------------------------------------------------------------------------------- */}
 
-        <div style={{order: getOrder(1)}} className={`group col-center  w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-white/5 backdrop-blur-md border border-white/10 text-white rounded-2xl px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6 shadow-2xl transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:shadow-lg   
+        <div style={{order: getOrder(1)}} className={`col-center  w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-white/5  text-white border border-gray-700 rounded-lg px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6shadow-2xl hover:border-white/20 hover:bg-white/10 
           ${sectionShow===0 || sectionShow===1 || sectionShow===2?'flex':'hidden'}
           ${sectionShow===1 ? 'scale-105':'scale-75'}`}>
 
-          <h2 className="text-lg sm:text-xl md:text-2xl font-semibold tracking-wide text-white/90 group-hover:text-white mb-4">
+          <h2 className="text-lg sm:text-xl md:text-2xl font-serif tracking-wide mb-4">
             Pizza
           </h2>
 
-          <div className="relative w-full h-[140px] sm:h-[170px] md:h-[220px]  mb-6 overflow-hidden rounded-xl border border-white/10 bg-slate-900/40">
+          <div className="relative w-full h-[140px] sm:h-[170px] md:h-[220px]  mb-6 overflow-hidden rounded border border-gray-600">
             <Image
               src="/meniu/Pizza.png"
               alt="Pizza"
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className="object-cover"
             />
           </div>
 
-          <BlueButon link="/meniu/pizza" />
+          <BlueButon continut="Vezi mai mult" link="/meniu/pizza" />
         </div>
 
 
@@ -89,24 +89,24 @@ const [sectionShow, setSectionShow] = useState<number>(0);
         {/* Mic Dejun = index 2 */}
         {/* -------------------------------------------------------------------------------------------- */}
 
-        <div style={{order: getOrder(2)}} className={`group col-center  w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-white/5 backdrop-blur-md border border-white/10 text-white rounded-2xl px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6 shadow-2xl transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:shadow-lg    
+        <div style={{order: getOrder(2)}} className={`col-center  w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-white/5  text-white border border-gray-700 rounded-lg px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6shadow-2xl hover:border-white/20 hover:bg-white/10  
           ${sectionShow===1 || sectionShow===2 || sectionShow===3?'flex':'hidden'}
           ${sectionShow===2 ? 'scale-105':'scale-75'}`}>
 
-          <h2 className="text-lg sm:text-xl md:text-2xl font-semibold tracking-wide text-white/90 group-hover:text-white mb-4">
+          <h2 className="text-lg sm:text-xl md:text-2xl font-serif tracking-wide mb-4">
             Mic Dejun
           </h2>
 
-          <div className="relative w-full h-[140px] sm:h-[170px] md:h-[220px]  mb-6 overflow-hidden rounded-xl border border-white/10 bg-slate-900/40">
+          <div className="relative w-full h-[140px] sm:h-[170px] md:h-[220px]  mb-6 overflow-hidden rounded border border-gray-600">
             <Image
               src="/meniu/MicDejun.png"
               alt="Mic Dejun"
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className="object-cover"
             />
           </div>
 
-          <BlueButon link="/meniu/micdejun" />
+          <BlueButon continut="Vezi mai mult" link="/meniu/micdejun" />
         </div>
 
 
@@ -114,24 +114,24 @@ const [sectionShow, setSectionShow] = useState<number>(0);
         {/* Pasta = index 3 */}
         {/* -------------------------------------------------------------------------------------------- */}
 
-        <div style={{order: getOrder(3)}} className={`group col-center  w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-white/5 backdrop-blur-md border border-white/10 text-white rounded-2xl px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6 shadow-2xl transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:shadow-lg     
+        <div style={{order: getOrder(3)}} className={`col-center  w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-white/5  text-white border border-gray-700 rounded-lg px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6shadow-2xl hover:border-white/20 hover:bg-white/10   
           ${sectionShow===2 || sectionShow===3 || sectionShow===4?'flex':'hidden'}
           ${sectionShow===3 ? 'scale-105':'scale-75'}`}>
 
-          <h2 className="text-lg sm:text-xl md:text-2xl font-semibold tracking-wide text-white/90 group-hover:text-white mb-4">
+          <h2 className="text-lg sm:text-xl md:text-2xl font-serif tracking-wide mb-4">
             Pasta
           </h2>
 
-          <div className="relative w-full h-[140px] sm:h-[170px] md:h-[220px]  mb-6 overflow-hidden rounded-xl border border-white/10 bg-slate-900/40">
+          <div className="relative w-full h-[140px] sm:h-[170px] md:h-[220px]  mb-6 overflow-hidden rounded border border-gray-600">
             <Image
               src="/meniu/Pasta.png"
               alt="Pasta"
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className="object-cover"
             />
           </div>
 
-          <BlueButon link="/meniu/pasta"/>
+          <BlueButon continut="Vezi mai mult" link="/meniu/pasta"/>
         </div>
 
 
@@ -139,24 +139,24 @@ const [sectionShow, setSectionShow] = useState<number>(0);
         {/* Salaata = index 4 */}
         {/* -------------------------------------------------------------------------------------------- */}
 
-        <div style={{order: getOrder(4)}} className={`group col-center  w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-white/5 backdrop-blur-md border border-white/10 text-white rounded-2xl px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6 shadow-2xl transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:shadow-lg   
+        <div style={{order: getOrder(4)}} className={`col-center  w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-white/5  text-white border border-gray-700 rounded-lg px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6shadow-2xl hover:border-white/20 hover:bg-white/10 
           ${sectionShow===3 || sectionShow===4 || sectionShow===5?'flex':'hidden'}
           ${sectionShow===4 ? 'scale-105':'scale-75'}`}>
 
-          <h2 className="text-lg sm:text-xl md:text-2xl font-semibold tracking-wide text-white/90 group-hover:text-white mb-4">
+          <h2 className="text-lg sm:text-xl md:text-2xl font-serif tracking-wide mb-4">
             Salaata
           </h2>
 
-          <div className="relative w-full h-[140px] sm:h-[170px] md:h-[220px]  mb-6 overflow-hidden rounded-xl border border-white/10 bg-slate-900/40">
+          <div className="relative w-full h-[140px] sm:h-[170px] md:h-[220px]  mb-6 overflow-hidden rounded border border-gray-600">
             <Image
               src="/meniu/Salat.png"
               alt="Salata"
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className="object-cover"
             />
           </div>
 
-          <BlueButon link="/meniu/salata"/>
+          <BlueButon continut="Vezi mai mult" link="/meniu/salata"/>
         </div>
 
 
@@ -164,24 +164,24 @@ const [sectionShow, setSectionShow] = useState<number>(0);
         {/* Supe = index 5 */}
         {/* -------------------------------------------------------------------------------------------- */}
 
-        <div style={{order: getOrder(5)}} className={`group col-center  w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-white/5 backdrop-blur-md border border-white/10 text-white rounded-2xl px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6 shadow-2xl transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:shadow-lg     
+        <div style={{order: getOrder(5)}} className={`col-center  w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-white/5  text-white border border-gray-700 rounded-lg px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6shadow-2xl hover:border-white/20 hover:bg-white/10   
           ${sectionShow===4 || sectionShow===5 || sectionShow===0?'flex':'hidden'}
           ${sectionShow===5 ? 'scale-105':'scale-75'}`}>
 
-          <h2 className="text-lg sm:text-xl md:text-2xl font-semibold tracking-wide text-white/90 group-hover:text-white mb-4">
+          <h2 className="text-lg sm:text-xl md:text-2xl font-serif tracking-wide mb-4">
             Supe
           </h2>
 
-          <div className="relative w-full h-[140px] sm:h-[170px] md:h-[220px]  mb-6 overflow-hidden rounded-xl border border-white/10 bg-slate-900/40">
+          <div className="relative w-full h-[140px] sm:h-[170px] md:h-[220px]  mb-6 overflow-hidden rounded border border-gray-600">
             <Image
               src="/meniu/Soup.png"
               alt="Supe"
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className="object-cover"
             />
           </div>
 
-          <BlueButon link="/meniu/supe" />
+          <BlueButon continut="Vezi mai mult" link="/meniu/supe" />
         </div>
 
 
@@ -191,4 +191,4 @@ const [sectionShow, setSectionShow] = useState<number>(0);
   )
 }
 
-export default Meniu
+export default Meniu  
