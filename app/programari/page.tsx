@@ -26,6 +26,7 @@ const Programari = () => {
     ora: '',
     locatia: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -36,7 +37,7 @@ const Programari = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     let valid = true;
@@ -75,13 +76,26 @@ const Programari = () => {
     }
 
     try {
-      const res = fetch('/api/programari', {
+      const res = await fetch('/api/programari', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ form})
-      })
+        body: JSON.stringify({
+          nume: form.nume,
+          telefon: form.telefon,
+          data: form.data,
+          persoane: form.persoane,
+          ora: form.ora,
+          locatie: form.locatia 
+        })
+      });
 
-      const data=await res.json()
+      const data = await res.json()
+
+      if (!res.ok) {
+        throw new Error(data.message || 'Eroare la trimiterea recenziei');
+      }
+
+
     } catch (err) {
 
     }
@@ -231,7 +245,8 @@ const Programari = () => {
             className='flex-center mt-2 w-full bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 shadow-lg disabled:opacity-50 cursor-pointer'
           >
 
-            Trimite Programarea
+            {isSubmitting ? 'Se trimite...' : 'Trimite Programarea'}
+
           </button>
         </form>
       </div>
