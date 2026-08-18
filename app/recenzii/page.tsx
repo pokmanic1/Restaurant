@@ -14,7 +14,12 @@ const Recenzii = () => {
   const [erorRecenzie, setErorRecenzie] = useState('');
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-const [errGeneral,setErrGeneral]=useState('')
+  const [errGeneral, setErrGeneral] = useState('')
+  const [successMsg, setSuccessMsg] = useState('');
+
+
+
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -39,8 +44,11 @@ const [errGeneral,setErrGeneral]=useState('')
       }
 
       setNume(''); setTitlu(''); setNota('5'); setRecenzie('');
+      
+      setSuccessMsg('Recenzie a fost trimisă cu succes!');
     } catch (err) {
       console.error(err);
+      setErrGeneral('Eroare la trimtere')
     } finally {
       setIsSubmitting(false);
     }
@@ -124,7 +132,8 @@ const [errGeneral,setErrGeneral]=useState('')
               />
               {erorRecenzie && <p className='text-red-400 text-sm mt-0.5'>{erorRecenzie}</p>}
             </div>
-                   {errGeneral && <div className='text-black border-2 rounded-lg border-red-600  text-center w-full bg-red-300 py-1 text-sm mt-0.5 font-semibold'>{errGeneral}</div>}
+                            {successMsg && <p className='text-green-400 text-center text-sm font-medium'>{successMsg}</p>}
+                            {errGeneral && <p className='text-red-400 text-center text-sm font-medium'>{errGeneral}</p>}
 
 
             <button

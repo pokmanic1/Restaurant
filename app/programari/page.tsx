@@ -83,7 +83,6 @@ const Programari = () => {
 
     setError(newErrors);
 
-    // 1. Oprim executia daca formularul nu este valid
     if (!valid) return;
 
     setIsSubmitting(true);
@@ -109,7 +108,6 @@ const Programari = () => {
       }
 
       setSuccessMsg('Programarea a fost trimisă cu succes!');
-      // 2. Resetam formularul la starea initiala de obiect
       setForm(initialFormState);
     } catch (err: any) {
       console.error(err);
@@ -239,13 +237,12 @@ const Programari = () => {
             </div>
           </div>
 
-          {/* Afisare mesaje globale de la server */}
           {serverError && <p className='text-red-400 text-center text-sm font-medium'>{serverError}</p>}
           {successMsg && <p className='text-green-400 text-center text-sm font-medium'>{successMsg}</p>}
 
           <button
             type='submit'
-            disabled={isSubmitting} // 3. Prevenim trimiterile multiple
+            disabled={isSubmitting} 
             className='flex justify-center items-center mt-2 w-full bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer'
           >
             {isSubmitting ? 'Se trimite...' : 'Trimite Programarea'}
