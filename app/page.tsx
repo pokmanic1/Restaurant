@@ -4,23 +4,52 @@ import { BlueButon, WhiteButon } from "@/components/Buton";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
 import gsap from "gsap";
-
+import { useRef } from "react";
 export default function Home() {
 
   useGSAP(() => {
-    const title = new SplitText('.title', { type: 'chars' });
+const title = new SplitText('.title', { type: 'words, chars' });
+const textStanga = new SplitText('.textStanga', { type: 'words, chars' });
+const textDreapta = new SplitText('.textDreapta', { type: 'words, chars' });
 
-    gsap.from(title.chars, {
+    const tl = gsap.timeline();
+
+    tl.from(title.chars, {
       yPercent: 100,
-      duration: 1.8,
+      autoAlpha: 0,
+      duration: 1.5,
       ease: "expo.out",
-      stagger: 0.06
+      stagger: 0.04
     })
+      .from(textStanga.chars, {
+        yPercent: 100,
+        autoAlpha: 0,
+        duration: 0.2,
+        ease: "expo.out",
+        stagger: 0.01
+      }, "-=1.0")
+      .from('.buton-animat-stanga', {
+        y: 30,
+        autoAlpha: 0,
+        duration: 1.2,
+        ease: "expo.out",
+        stagger: 0.1
+      }, "-=0.8")
+      .from(textDreapta.chars, {
+        y: 30,
+        autoAlpha: 0,
+        duration: 0.2,
+        ease: "expo.out",
+        stagger: 0.01
+      }, "-=0.8").from('.buton-animat-dreapta', {
+        y: 30,
+        autoAlpha: 0,
+        duration: 1.2,
+        ease: "expo.out",
+        stagger: 0.1
+      }, "-=0.8");
 
-
-
-  }, [])
-
+  }, []);
 
   return (
     <>
@@ -39,23 +68,26 @@ export default function Home() {
 
         <div className="w-full hidden md:flex flex-col md:flex-row items-center md:items-end md:justify-between gap-8 z-10 mt-auto">
           <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-sm md:max-w-xs lg:max-w-sm">
-            <h2 className="font-serif-playfair text-white text-lg sm:text-xl lg:text-2xl mb-3 drop-shadow">
+            <h2 className="textStanga font-serif-playfair text-white text-lg sm:text-xl lg:text-2xl mb-3 drop-shadow">
               Transformăm masa într-o experiență de neuitat.
             </h2>
-            <BlueButon link="/meniu" continut="Vezi meniu" />
+            <div className="buton-animat-stanga">
+              <BlueButon link="/meniu" continut="Vezi meniu" />
+            </div>
           </div>
 
           <div className="flex flex-col items-center md:items-end text-center md:text-right max-w-sm md:max-w-xs lg:max-w-sm md:ml-auto">
-            <h3 className="font-serif-playfair text-white text-lg sm:text-xl lg:text-2xl mb-3 drop-shadow">
+            <h3 className="textDreapta font-serif-playfair text-white text-lg sm:text-xl lg:text-2xl mb-3 drop-shadow break-words   ">
               Servim mai mult decât simplă mâncare
             </h3>
-            <WhiteButon link="/programari" continut="Programează-te" />
+            <div className="buton-animat-dreapta">
+              <WhiteButon link="/programari" continut="Programează-te" />
+            </div>
           </div>
         </div>
-
         <div className="w-full md:hidden flex flex-col md:flex-row items-center md:items-end md:justify-between gap-8 z-10 mt-5">
           <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-sm md:max-w-xs lg:max-w-sm">
-            <h2 className="font-serif-playfair text-white text-lg sm:text-md lg:text-xl mb-3 drop-shadow">
+            <h2 className="  font-serif-playfair text-white text-lg sm:text-md lg:text-xl mb-3 drop-shadow">
               Transformăm masa într-o experiență de neuitat.
             </h2>
             <div className="flex-center gap-5">
