@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inria_Serif, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-
+import Footer from "@/components/Footer";
 const inriaSerif = Inria_Serif({
   variable: "--font-inria-serif",
   subsets: ["latin"],
@@ -36,7 +36,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
       <Navbar></Navbar>
         {children}
-
+        <Footer></Footer>
 
       </body>
 
