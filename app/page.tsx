@@ -1,10 +1,30 @@
+'use client'
 import Image from "next/image";
 import { BlueButon, WhiteButon } from "@/components/Buton";
+import { useGSAP } from "@gsap/react";
+import { SplitText } from "gsap/SplitText";
+import gsap from "gsap";
 
 export default function Home() {
+
+  useGSAP(() => {
+    const title = new SplitText('.title', { type: 'chars' });
+
+    gsap.from(title.chars, {
+      yPercent: 100,
+      duration: 1.8,
+      ease: "expo.out",
+      stagger: 0.06
+    })
+
+
+
+  }, [])
+
+
   return (
     <>
-      <section
+      <section id='hero'
         className="relative flex flex-col items-center justify-center md:justify-between p-6 sm:p-10 md:p-14 w-full min-w-[375px] min-h-[95dvh] bg-cover bg-center overflow-hidden"
         style={{ backgroundImage: "url('/restaurants 1.png')" }}
       >
@@ -12,7 +32,7 @@ export default function Home() {
         <div className="line2 hidden md:block absolute bottom-10 left-10 w-[120px] lg:w-[150px] h-[120px] lg:h-[150px] border-l border-b border-gray-200/60 pointer-events-none"></div>
 
         <div className="md:m-auto text-center z-10">
-          <h1 className="text-white text-5xl sm:text-7xl md:text-8xl font-serif-inria tracking-wide drop-shadow-md">
+          <h1 className="title text-white text-5xl sm:text-7xl md:text-8xl font-serif-inria tracking-wide drop-shadow-md">
             Loughi
           </h1>
         </div>
@@ -48,10 +68,10 @@ export default function Home() {
 
       <section className="col-center principal-gradient w-full min-w-[375px] px-6 py-20 sm:py-28 relative overflow-hidden">
         <div className="w-full max-w-[1100px] grid grid-cols-1 md:grid-cols-2 gap-3  sm:gap-5 md:gap-8 lg:gap-12  items-center">
-         
-         
+
+
           <div className="relative group mx-auto w-full max-w-[500px] md:max-w-none">
-          
+
             <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-teal-500/20 rounded-3xl blur-xl opacity-50 group-hover:opacity-100 transition duration-500"></div>
             <div className="relative w-full h-[260px] sm:h-[320px] md:h-[450px] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
               <Image
