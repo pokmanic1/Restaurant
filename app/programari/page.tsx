@@ -1,6 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import SplitText from 'gsap/src/SplitText';
 
 const timeOptions = [
   "16:00", "16:30", "17:00", "17:30",
@@ -18,6 +21,45 @@ const initialFormState = {
 };
 
 const Programari = () => {
+
+  useGSAP(() => {
+    const title = new SplitText('.title', { type: 'words, chars' });
+    const tl = gsap.timeline();
+
+    tl.from(title.chars, {
+        yPercent: 100,
+        autoAlpha: 0,
+        ease: "expo.out",
+        stagger: 0.03
+      })
+      .from('.section', {
+        y: 30,
+        autoAlpha: 0,
+        duration: 0.8,
+        ease: "expo.out",
+      }, "-=0.2")
+      .from(['.div1', '.div2', '.div3', '.div4'], {
+        y: 20,
+        autoAlpha: 0,
+        duration: 0.4,
+        stagger: 0.1,
+        ease: "power2.out",
+      }, "-=0.4")
+      
+      .fromTo('.buton', 
+        { y: 30, autoAlpha: 0 },
+        { 
+          y: 0, 
+          autoAlpha: 1, 
+          duration: 0.5, 
+          ease: "back.out(1.7)",
+          clearProps: "transform" 
+        }, 
+        "-=0.2"
+      );
+
+  }, []);
+
   const [error, setError] = useState({
     numeErr: '',
     telefonErr: '',
@@ -34,7 +76,6 @@ const Programari = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-
     setForm((prev) => ({
       ...prev,
       [name]: value,
@@ -97,7 +138,7 @@ const Programari = () => {
           data: form.data,
           persoane: form.persoane,
           ora: form.ora,
-          locatie: form.locatia 
+          locatie: form.locatia
         })
       });
 
@@ -119,14 +160,14 @@ const Programari = () => {
 
   return (
     <section className='flex flex-col items-center justify-center gap-6 principal-gradient w-full min-w-[375px] min-h-[95dvh] px-[5px] py-[50px]'>
-      <h1 className='text-center text-white text-[42px] sm:text-[48px] md:text-[54px] lg:text-[60px] font-serif-inria'>
+      <h1 className='title text-center text-white text-[42px] sm:text-[48px] md:text-[54px] lg:text-[60px] font-serif-inria'>
         Programări
       </h1>
 
-      <div className='rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-6 sm:p-8 max-w-[1200px] w-[90%] md:w-[50%] shadow-2xl text-white'>
+      <div className='section rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-6 sm:p-8 max-w-[1200px] w-[90%] md:w-[50%] shadow-2xl text-white'>
         <form onSubmit={handleSubmit} className='w-full flex flex-col gap-5 text-white'>
 
-          <div className='flex flex-col gap-1.5 w-full'>
+          <div className='div1 flex flex-col gap-1.5 w-full'>
             <label htmlFor='nume' className='text-sm font-medium text-white/90'>
               Numele
             </label>
@@ -136,12 +177,12 @@ const Programari = () => {
               name='nume'
               value={form.nume}
               onChange={handleChange}
-              className={`w-full p-3 rounded-xl bg-white/5 border backdrop-blur-md text-white placeholder-slate-400 ${error.numeErr ? "border-red-500/80 focus:border-red-500" : 'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition duration-300`}
+              className={`w-full p-3 rounded-xl bg-white/5 border backdrop-blur-md text-white placeholder-slate-400 ${error.numeErr ? "border-red-500/80 focus:border-red-500" : 'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition-colors duration-300`}
             />
             {error.numeErr && <p className='text-red-400 text-sm mt-0.5'>{error.numeErr}</p>}
           </div>
 
-          <div className="flex flex-col gap-1.5 w-full">
+          <div className="div2 flex flex-col gap-1.5 w-full">
             <label htmlFor="telefon" className='text-sm font-medium text-white/90'>
               Telefon
             </label>
@@ -151,13 +192,13 @@ const Programari = () => {
               name="telefon"
               value={form.telefon}
               onChange={handleChange}
-              className={`w-full p-3 rounded-xl bg-white/5 border backdrop-blur-xl text-white placeholder-slate-400 ${error.telefonErr ? "border-red-500/80 focus:border-red-500" : 'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition duration-300`}
+              className={`w-full p-3 rounded-xl bg-white/5 border backdrop-blur-xl text-white placeholder-slate-400 ${error.telefonErr ? "border-red-500/80 focus:border-red-500" : 'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition-colors duration-300`}
             />
             {error.telefonErr && <p className='text-red-400 text-sm mt-0.5'>{error.telefonErr}</p>}
           </div>
 
           <div className="grid w-full grid-cols-1 sm:grid-cols-2 gap-5">
-            <div className="flex flex-col gap-1.5 w-full">
+            <div className="div3 flex flex-col gap-1.5 w-full">
               <label htmlFor="data" className='text-sm font-medium text-white/90'>
                 Data
               </label>
@@ -167,12 +208,12 @@ const Programari = () => {
                 name="data"
                 value={form.data}
                 onChange={handleChange}
-                className={`w-full p-3 rounded-xl bg-white/5 border backdrop-blur-xl text-white placeholder-slate-400 ${error.dataErr ? "border-red-500/80 focus:border-red-500" : 'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition duration-300`}
+                className={`w-full p-3 rounded-xl bg-white/5 border backdrop-blur-xl text-white placeholder-slate-400 ${error.dataErr ? "border-red-500/80 focus:border-red-500" : 'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition-colors duration-300`}
               />
               {error.dataErr && <p className='text-red-400 text-sm mt-0.5'>{error.dataErr}</p>}
             </div>
 
-            <div className="flex flex-col gap-1.5 w-full">
+            <div className="div3 flex flex-col gap-1.5 w-full">
               <label htmlFor="persoane" className='text-sm font-medium text-white/90'>
                 Număr persoane
               </label>
@@ -184,14 +225,14 @@ const Programari = () => {
                 max={20}
                 value={form.persoane}
                 onChange={handleChange}
-                className={`w-full p-3 rounded-xl bg-white/5 border backdrop-blur-xl text-white placeholder-slate-400 ${error.persoaneErr ? "border-red-500/80 focus:border-red-500" : 'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition duration-300`}
+                className={`w-full p-3 rounded-xl bg-white/5 border backdrop-blur-xl text-white placeholder-slate-400 ${error.persoaneErr ? "border-red-500/80 focus:border-red-500" : 'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition-colors duration-300`}
               />
               {error.persoaneErr && <p className='text-red-400 text-sm mt-0.5'>{error.persoaneErr}</p>}
             </div>
           </div>
 
           <div className="grid w-full grid-cols-1 sm:grid-cols-2 gap-5">
-            <div className="flex flex-col gap-1.5 w-full">
+            <div className="div4 flex flex-col gap-1.5 w-full">
               <label htmlFor="ora" className='text-sm font-medium text-white/90'>
                 Ora
               </label>
@@ -200,7 +241,7 @@ const Programari = () => {
                 id="ora"
                 value={form.ora}
                 onChange={handleChange}
-                className={`w-full p-3 rounded-xl bg-white/5 border backdrop-blur-xl text-white placeholder-slate-400 ${error.oraErr ? "border-red-500/80 focus:border-red-500" : 'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition duration-300`}>
+                className={`w-full p-3 rounded-xl bg-white/5 border backdrop-blur-xl text-white placeholder-slate-400 ${error.oraErr ? "border-red-500/80 focus:border-red-500" : 'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition-colors duration-300`}>
                 <option value="" disabled className="bg-slate-900 text-slate-400">
                   Selectează ora
                 </option>
@@ -213,7 +254,7 @@ const Programari = () => {
               {error.oraErr && <p className='text-red-400 text-sm mt-0.5'>{error.oraErr}</p>}
             </div>
 
-            <div className="flex flex-col gap-1.5 w-full">
+            <div className="div4 flex flex-col gap-1.5 w-full">
               <label htmlFor="locatia" className='text-sm font-medium text-white/90'>
                 Locația
               </label>
@@ -222,7 +263,7 @@ const Programari = () => {
                 id="locatia"
                 value={form.locatia}
                 onChange={handleChange}
-                className={`w-full p-3 rounded-xl bg-white/5 border backdrop-blur-xl text-white placeholder-slate-400 ${error.locatiaErr ? "border-red-500/80 focus:border-red-500" : 'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition duration-300`}>
+                className={`w-full p-3 rounded-xl bg-white/5 border backdrop-blur-xl text-white placeholder-slate-400 ${error.locatiaErr ? "border-red-500/80 focus:border-red-500" : 'border-white/10 focus:border-white/30 focus:bg-white/10'} focus:outline-none transition-colors duration-300`}>
                 <option value="" disabled className="bg-slate-900 text-slate-400">
                   Selectează locația
                 </option>
@@ -242,8 +283,8 @@ const Programari = () => {
 
           <button
             type='submit'
-            disabled={isSubmitting} 
-            className='flex justify-center items-center mt-2 w-full bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer'
+            disabled={isSubmitting}
+            className='buton flex justify-center items-center mt-2 w-full bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 text-white font-semibold py-3 px-4 rounded-xl transition-colors duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer'
           >
             {isSubmitting ? 'Se trimite...' : 'Trimite Programarea'}
           </button>

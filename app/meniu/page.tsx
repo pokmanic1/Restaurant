@@ -4,7 +4,6 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { BlueButon } from '@/components/Buton'
-import { section } from 'framer-motion/client'
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
