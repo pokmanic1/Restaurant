@@ -2,52 +2,107 @@
 import Image from "next/image";
 import { BlueButon, WhiteButon } from "@/components/Buton";
 import { useGSAP } from "@gsap/react";
-import { SplitText } from "gsap/SplitText";
 import gsap from "gsap";
-import { useRef } from "react";
+import { SplitText } from "gsap/SplitText";
+
 export default function Home() {
 
   useGSAP(() => {
-const title = new SplitText('.title', { type: 'words, chars' });
-const textStanga = new SplitText('.textStanga', { type: 'words, chars' });
-const textDreapta = new SplitText('.textDreapta', { type: 'words, chars' });
+    const mm = gsap.matchMedia();
 
-    const tl = gsap.timeline();
+    mm.add("(min-width: 768px)", () => {
+      const title = new SplitText('.title', { type: 'words, chars' });
+      const textStanga = new SplitText('.textStanga', { type: 'words, chars' });
+      const textDreapta = new SplitText('.textDreapta', { type: 'words, chars' });
 
-    tl.from(title.chars, {
-      yPercent: 100,
-      autoAlpha: 0,
-      duration: 1.5,
-      ease: "expo.out",
-      stagger: 0.04
-    })
+      const tl = gsap.timeline();
+
+      tl.from(title.chars, {
+        yPercent: 100,
+        autoAlpha: 0,
+        duration: 1.2,
+        ease: "expo.out",
+        stagger: 0.03
+      })
       .from(textStanga.chars, {
         yPercent: 100,
         autoAlpha: 0,
         duration: 0.2,
         ease: "expo.out",
         stagger: 0.01
-      }, "-=1.0")
+      }, "-=0.8")
       .from('.buton-animat-stanga', {
         y: 30,
         autoAlpha: 0,
-        duration: 1.2,
-        ease: "expo.out",
-        stagger: 0.1
-      }, "-=0.8")
+        duration: 1,
+        ease: "expo.out"
+      }, "-=0.6")
       .from(textDreapta.chars, {
         y: 30,
         autoAlpha: 0,
         duration: 0.2,
         ease: "expo.out",
         stagger: 0.01
-      }, "-=0.8").from('.buton-animat-dreapta', {
+      }, "-=0.8")
+      .from('.buton-animat-dreapta', {
         y: 30,
+        autoAlpha: 0,
+        duration: 1,
+        ease: "expo.out"
+      }, "-=0.6")
+      .from('.section2', {
+        y: 30,
+        autoAlpha: 0,
+        duration: 0.5,
+        ease: "expo.out",
+      }, "-=0.2")
+      .from('.section3', {
+        y: 30,
+        autoAlpha: 0,
+        duration: 0.5,
+        ease: "expo.out",
+      }, "-=0.2");
+    });
+
+    mm.add("(max-width: 767px)", () => {
+      const title = new SplitText('.title', { type: 'words, chars' });
+      const textMobile = new SplitText('.textMobile', { type: 'words, chars' });
+
+      const tl = gsap.timeline();
+
+      tl.from(title.chars, {
+        yPercent: 100,
         autoAlpha: 0,
         duration: 1.2,
         ease: "expo.out",
-        stagger: 0.1
-      }, "-=0.8");
+        stagger: 0.03
+      })
+      .from(textMobile.chars, {
+        y: 30,
+        autoAlpha: 0,
+        duration: 0.2,
+        ease: "expo.out",
+        stagger: 0.01
+      }, "-=0.8")
+      .from('.butoaneMobile', {
+        y: 30,
+        autoAlpha: 0,
+        duration: 0.8,
+        ease: "expo.out"
+      }, "-=0.6")
+      .from('.section2', {
+        y: 30,
+        autoAlpha: 0,
+        duration: 0.5,
+        ease: "expo.out",
+      }, "-=0.2")
+      .from('.section3', {
+        y: 30,
+        autoAlpha: 0,
+        duration: 0.5,
+        ease: "expo.out",
+      }, "-=0.2");
+    });
 
   }, []);
 
@@ -66,6 +121,7 @@ const textDreapta = new SplitText('.textDreapta', { type: 'words, chars' });
           </h1>
         </div>
 
+        {/* SECȚIUNE DESKTOP */}
         <div className="w-full hidden md:flex flex-col md:flex-row items-center md:items-end md:justify-between gap-8 z-10 mt-auto">
           <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-sm md:max-w-xs lg:max-w-sm">
             <h2 className="textStanga font-serif-playfair text-white text-lg sm:text-xl lg:text-2xl mb-3 drop-shadow">
@@ -77,7 +133,7 @@ const textDreapta = new SplitText('.textDreapta', { type: 'words, chars' });
           </div>
 
           <div className="flex flex-col items-center md:items-end text-center md:text-right max-w-sm md:max-w-xs lg:max-w-sm md:ml-auto">
-            <h3 className="textDreapta font-serif-playfair text-white text-lg sm:text-xl lg:text-2xl mb-3 drop-shadow break-words   ">
+            <h3 className="textDreapta font-serif-playfair text-white text-lg sm:text-xl lg:text-2xl mb-3 drop-shadow break-words">
               Servim mai mult decât simplă mâncare
             </h3>
             <div className="buton-animat-dreapta">
@@ -85,12 +141,14 @@ const textDreapta = new SplitText('.textDreapta', { type: 'words, chars' });
             </div>
           </div>
         </div>
-        <div className="w-full md:hidden flex flex-col md:flex-row items-center md:items-end md:justify-between gap-8 z-10 mt-5">
-          <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-sm md:max-w-xs lg:max-w-sm">
-            <h2 className="  font-serif-playfair text-white text-lg sm:text-md lg:text-xl mb-3 drop-shadow">
+
+        {/* SECȚIUNE MOBIL */}
+        <div className="w-full md:hidden flex flex-col items-center gap-8 z-10 mt-5">
+          <div className="flex flex-col items-center text-center max-w-sm">
+            <h2 className="textMobile font-serif-playfair text-white text-lg sm:text-md mb-3 drop-shadow">
               Transformăm masa într-o experiență de neuitat.
             </h2>
-            <div className="flex-center gap-5">
+            <div className="butoaneMobile flex items-center justify-center gap-5">
               <BlueButon link="/meniu" continut="Vezi meniu" />
               <WhiteButon link="/programari" continut="Programează-te" />
             </div>
@@ -98,12 +156,10 @@ const textDreapta = new SplitText('.textDreapta', { type: 'words, chars' });
         </div>
       </section>
 
+      {/* SECTION 2 */}
       <section className="col-center principal-gradient w-full min-w-[375px] px-6 py-20 sm:py-28 relative overflow-hidden">
-        <div className="w-full max-w-[1100px] grid grid-cols-1 md:grid-cols-2 gap-3  sm:gap-5 md:gap-8 lg:gap-12  items-center">
-
-
+        <div className="section2 w-full max-w-[1100px] grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-5 md:gap-8 lg:gap-12 items-center">
           <div className="relative group mx-auto w-full max-w-[500px] md:max-w-none">
-
             <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-teal-500/20 rounded-3xl blur-xl opacity-50 group-hover:opacity-100 transition duration-500"></div>
             <div className="relative w-full h-[260px] sm:h-[320px] md:h-[450px] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
               <Image
@@ -115,9 +171,8 @@ const textDreapta = new SplitText('.textDreapta', { type: 'words, chars' });
             </div>
           </div>
 
-          <div className=" flex flex-col items-start  text-center md:text-start text-white w-full p-6 sm:p-12 md:p-0">
-
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif-inria tracking-wide mb-6 w-full md:w-auto flex-center ">
+          <div className="flex flex-col items-start text-center md:text-start text-white w-full p-6 sm:p-12 md:p-0">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif-inria tracking-wide mb-6 w-full md:w-auto flex-center">
               Despre noi
             </h2>
             <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-4">
@@ -135,28 +190,21 @@ const textDreapta = new SplitText('.textDreapta', { type: 'words, chars' });
               <BlueButon link="/contact" continut="Contactează-ne" />
             </div>
           </div>
-
-
-
         </div>
       </section>
 
+      {/* SECTION 3 */}
       <section className="col-center principal-gradient w-full min-w-[375px] px-6 py-20 sm:py-28 relative">
-        <div className="w-full max-w-[850px] rounded-3xl border border-white/15 bg-slate-900/40 backdrop-blur-xl p-8 sm:p-14 text-center shadow-2xl relative overflow-hidden">
+        <div className="section3 w-full max-w-[850px] rounded-3xl border border-white/15 bg-slate-900/40 backdrop-blur-xl p-8 sm:p-14 text-center shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-blue-500/10 blur-3xl pointer-events-none"></div>
-
-
-
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif-inria text-white tracking-wide mb-4">
             Spune-ne cum a fost experiența ta
           </h2>
-
           <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-8 max-w-[580px] mx-auto">
             Ai fost de curând la Loughi? Feedback-ul tău ne ajută să fim mai
             buni în fiecare zi. Lasă-ne o recenzie și împărtășește-ne impresiile
             tale.
           </p>
-
           <div className="flex justify-center">
             <WhiteButon link="/recenzii" continut="Lasă o recenzie" />
           </div>
