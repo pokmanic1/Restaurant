@@ -20,6 +20,15 @@ const initialFormState = {
   locatia: ''
 };
 
+const REGEX_TELEFON = /^(\+373|0)[67]\d{7}$/;
+
+function esteTelefonValid(telefon: string): boolean {
+  const curatat = telefon.replace(/[\s-]/g, '');
+  return REGEX_TELEFON.test(curatat);
+}
+
+
+
 const Programari = () => {
 
   useGSAP(() => {
@@ -27,11 +36,11 @@ const Programari = () => {
     const tl = gsap.timeline();
 
     tl.from(title.chars, {
-        yPercent: 100,
-        autoAlpha: 0,
-        ease: "expo.out",
-        stagger: 0.03
-      })
+      yPercent: 100,
+      autoAlpha: 0,
+      ease: "expo.out",
+      stagger: 0.03
+    })
       .from('.section', {
         y: 30,
         autoAlpha: 0,
@@ -45,16 +54,16 @@ const Programari = () => {
         stagger: 0.1,
         ease: "power2.out",
       }, "-=0.4")
-      
-      .fromTo('.buton', 
+
+      .fromTo('.buton',
         { y: 30, autoAlpha: 0 },
-        { 
-          y: 0, 
-          autoAlpha: 1, 
-          duration: 0.5, 
+        {
+          y: 0,
+          autoAlpha: 1,
+          duration: 0.5,
           ease: "back.out(1.7)",
-          clearProps: "transform" 
-        }, 
+          clearProps: "transform"
+        },
         "-=0.2"
       );
 
@@ -103,6 +112,9 @@ const Programari = () => {
     }
     if (!form.telefon.trim()) {
       newErrors.telefonErr = 'Numărul de telefon este obligatoriu.';
+      valid = false;
+    } else if (!esteTelefonValid(form.telefon)) {
+      newErrors.telefonErr = 'Numărul de telefon nu este valid. Format: 06..... sau +373.......';
       valid = false;
     }
     if (!form.data) {
