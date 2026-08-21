@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import SplitText from 'gsap/src/SplitText';
+import { json } from 'stream/consumers';
 
 const Recenzii = () => {
   const [nume, setNume] = useState('');
@@ -29,39 +30,64 @@ const Recenzii = () => {
       ease: "expo.out",
       stagger: 0.03
     })
-    .from('.form-card', {
-      y: 30,
-      autoAlpha: 0,
-      duration: 0.8,
-      ease: "expo.out",
-    }, "-=0.2")
-    .from('.field-group', {
-      y: 20,
-      autoAlpha: 0,
-      duration: 0.4,
-      stagger: 0.1,
-      ease: "power2.out",
-    }, "-=0.4")
-    .fromTo('.buton', 
-      { y: 30, autoAlpha: 0 },
-      { 
-        y: 0, 
-        autoAlpha: 1, 
-        duration: 0.5, 
-        ease: "back.out(1.7)",
-        clearProps: "transform"
-      }, 
-      "-=0.2"
-    );
+      .from('.form-card', {
+        y: 30,
+        autoAlpha: 0,
+        duration: 0.8,
+        ease: "expo.out",
+      }, "-=0.2")
+      .from('.field-group', {
+        y: 20,
+        autoAlpha: 0,
+        duration: 0.4,
+        stagger: 0.1,
+        ease: "power2.out",
+      }, "-=0.4")
+      .fromTo('.buton',
+        { y: 30, autoAlpha: 0 },
+        {
+          y: 0,
+          autoAlpha: 1,
+          duration: 0.5,
+          ease: "back.out(1.7)",
+          clearProps: "transform"
+        },
+        "-=0.2"
+      );
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    setSuccessMsg('')
+    setErrGeneral('')
+
+
+
+
+    const TRecenzii = 1000 * 60 * 60 * 24 * 3;
+    const ultimaSalvare = JSON.parse(localStorage.getItem('LimitaTrimitereRecenzii') || 'null');
+
+    if (ultimaSalvare && (Date.now() - ultimaSalvare < TRecenzii)) {
+      const timpRamasMilisecunde = TRecenzii - (Date.now() - ultimaSalvare);
+      const zileRamase = Math.ceil(timpRamasMilisecunde / (1000 * 60 * 60 * 24));
+
+      setErrGeneral(`Poți trimite o nouă recenzie peste ${zileRamase} ${zileRamase === 1 ? 'zi' : 'zile'}.`);
+      return;
+    }
+
+
+
     let areErori = false;
-    if (!titlu) { setErorTitlu('Câmpul "titlu" e obligatoriu'); areErori = true; } else setErorTitlu('');
+    if (!titlu ) { setErorTitlu('Câmpul "titlu" e obligatoriu'); areErori = true; } else setErorTitlu('');
+    if (titlu.length<5) { setErorTitlu('Câmpul "titlu" trebuie sa aiba macar 5 litere'); areErori = true; } else setErorTitlu('');
     if (!recenzie) { setErorRecenzie('Câmpul "recenzie" e obligatoriu'); areErori = true; } else setErorRecenzie('');
+    if (recenzie.length<30) { setErorRecenzie('Câmpul "recenzie" trebuie sa aiba macar 30 de caractere'); areErori = true; } else setErorRecenzie('');
     if (areErori) return;
+
+
+
+
 
     setIsSubmitting(true);
     try {
@@ -78,9 +104,20 @@ const Recenzii = () => {
         throw new Error(data.message || 'Eroare la trimiterea recenziei');
       }
 
+
+
       setNume(''); setTitlu(''); setNota('5'); setRecenzie('');
-      
       setSuccessMsg('Recenzie a fost trimisă cu succes!');
+
+
+
+
+      localStorage.setItem('LimitaTrimitereRecenzii', JSON.stringify(Date.now()));
+      console.log('am salvat in consola data de azi ', Date.now())
+
+
+
+
     } catch (err) {
       console.error(err);
       setErrGeneral('Eroare la trimtere');
@@ -158,11 +195,12 @@ const Recenzii = () => {
                 placeholder='Scrie părerea ta aici...'
                 value={recenzie}
                 onChange={(e) => setRecenzie(e.target.value)}
-                className={`w-full p-3 rounded-xl bg-white/5 border backdrop-blur-md text-white placeholder-slate-400 focus:outline-none transition-colors duration-300 resize-none ${erorRecenzie ? 'border-red-500/80 focus:border-red-500' : 'border-white/10 focus:border-white/30 focus:bg-white/10'
+                className={`relative   w-full p-3 rounded-xl bg-white/5 border backdrop-blur-md text-white placeholder-slate-400 focus:outline-none transition-colors duration-300 resize-none ${erorRecenzie ? 'border-red-500/80 focus:border-red-500' : 'border-white/10 focus:border-white/30 focus:bg-white/10'
                   }`}
               />
-              {erorRecenzie && <p className='text-red-400 text-sm mt-0.5'>{erorRecenzie}</p>}
+              <div className="absolute text-gray-300  text-[10px] md:text-[12px] bottom-1 right-3 ">{recenzie.length}/30</div>
             </div>
+              {erorRecenzie && <p className='text-red-400 text-sm mt-[-10px]'>{erorRecenzie}</p>}
 
             {successMsg && <p className='text-green-400 text-center text-sm font-medium'>{successMsg}</p>}
             {errGeneral && <p className='text-red-400 text-center text-sm font-medium'>{errGeneral}</p>}

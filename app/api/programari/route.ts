@@ -3,16 +3,16 @@ import ProgramariDB from "@/lib/models/programari";
 import { NextRequest, NextResponse } from "next/server";
 import connectDB from "@/lib/db";
 
-export async function GET() {
-    try {
-        await connectDB();
-        const programari = await ProgramariDB.find({});
-        return NextResponse.json({ message: "succes", data: programari }, { status: 200 });
-    } catch (err: any) {
-        console.error("Eroare GET Programari:", err.message);
-        return NextResponse.json({ message: "error", error: err.message }, { status: 500 });
-    }
-}
+// export async function GET() {
+//     try {
+//         await connectDB();
+//         const programari = await ProgramariDB.find({});
+//         return NextResponse.json({ message: "succes", data: programari }, { status: 200 });
+//     } catch (err: any) {
+//         console.error("Eroare GET Programari:", err.message);
+//         return NextResponse.json({ message: "error", error: err.message }, { status: 500 });
+//     }
+// }
 
 export async function POST(req: NextRequest) {
     try {
