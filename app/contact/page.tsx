@@ -14,19 +14,20 @@ const Contact = () => {
       yPercent: 100,
       autoAlpha: 0,
       ease: "expo.out",
-      stagger: 0.03
+      
+      stagger: 0.06
     })
     .from('.map-card', {
-      x: -30,
+      x: -60,
       autoAlpha: 0,
-      duration: 0.8,
+      duration:1.5,
       ease: "expo.out",
     }, "-=0.2")
     .from('.info-card', {
-      x: 30,
+      x: 60,
       autoAlpha: 0,
-      duration: 0.5,
-      stagger: 0.15,
+      duration: 1.5,
+      stagger: 0.3,
       ease: "power2.out",
       clearProps: "transform"
     }, "-=0.6");
