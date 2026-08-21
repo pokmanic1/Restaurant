@@ -3,12 +3,16 @@
 import React from 'react'
 import { useParams } from 'next/navigation'
 import Image from 'next/image'
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import SplitText from 'gsap/src/SplitText';
+
 
 export interface Preparat {
   nume: string;
-  gramaj: number; // în grame / ml
+  gramaj: number;
   ingredient: string;
-  pret: number; // în MDL
+  pret: number;
   img: string;
 }
 
@@ -421,6 +425,26 @@ export const meniu: CategorieMeniu[] = [
   }
 ];
 const CategorieMeniuPage = () => {
+
+  useGSAP(() => {
+    const title = new SplitText(".title", { type: 'words,chars' });
+
+    const tl = gsap.timeline();
+
+    tl.from(title.chars, {
+      yPercent: 100,
+      autoAlpha: 0,
+
+      ease: "expo.out",
+      stagger: 0.02
+    }).fromTo(
+      ".card",
+      { yPercent: 40, autoAlpha: 0 },
+      { yPercent: 0, autoAlpha: 1, duration: 0.1, ease: "expo.out", stagger: 0.08 },
+      "-=0.3"
+    );
+  });
+
   const params = useParams()
   const categorie = meniu.find((item) => item.slug === params.slug)
 
@@ -436,7 +460,7 @@ const CategorieMeniuPage = () => {
 
   return (
     <section className='col-center principal-gradient w-full min-w-[375px] min-h-[95dvh] px-[15px] sm:px-[20px] py-[50px]'>
-      <h1 className='text-center text-white text-[42px] sm:text-[48px] md:text-[54px] lg:text-[60px] font-serif-inria mb-8 sm:mb-12 tracking-wide'>
+      <h1 className='title text-center text-white text-[42px] sm:text-[48px] md:text-[54px] lg:text-[60px] font-serif-inria mb-8 sm:mb-12 tracking-wide'>
         {categorie.titlu}
       </h1>
 
@@ -444,7 +468,7 @@ const CategorieMeniuPage = () => {
         {categorie.tipuri.map((preparat) => (
           <div
             key={preparat.nume}
-            className='group col-center w-full rounded-2xl overflow-hidden bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:shadow-lg p-4'
+            className='card group col-center w-full rounded-2xl overflow-hidden bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:shadow-lg p-4'
           >
             <div className='relative w-full h-[180px] sm:h-[200px] rounded-xl overflow-hidden mb-4 bg-slate-900/40'>
               <img
@@ -458,7 +482,7 @@ const CategorieMeniuPage = () => {
               </div>
             </div>
 
-            <h3 className='text-xl text-center font-semibold tracking-wide text-white/90 group-hover:text-white mb-2 leading-tight min-h-[48px] flex items-center'>
+            <h3 className='preparatNume text-xl text-center font-semibold tracking-wide text-white/90 group-hover:text-white mb-2 leading-tight min-h-[48px] flex items-center'>
               {preparat.nume}
             </h3>
 

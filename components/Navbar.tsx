@@ -40,7 +40,7 @@ const Navbar = () => {
         </button>
 
       </nav>
-      <div className={`absolute top-14 right-0 z-50 flex-col w-56 font-serif-playfair text-sm md:hidden text-white bg-black p-5 rounded-2xl shadow-xl border border-gray-100 gap-4 ${burger ? 'flex' : 'hidden'}`}>
+      <div className={`absolute  top-14 right-0 z-50 flex-col w-56 font-serif-playfair text-sm md:hidden text-white bg-black p-5 rounded-2xl shadow-xl border border-gray-100 gap-4 ${burger ? 'flex' : 'hidden'}`}>
         <Link href='/meniu'>Meniu</Link>
         <Link href='/programari' >Programari</Link>
         <Link href='/recenzii' >Recenzii</Link>
