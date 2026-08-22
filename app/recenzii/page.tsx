@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import SplitText from 'gsap/src/SplitText';
-import { json } from 'stream/consumers';
 
 const Recenzii = () => {
   const [nume, setNume] = useState('');

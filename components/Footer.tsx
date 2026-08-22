@@ -4,7 +4,7 @@ import logoImg from '@/public/Logo.png'
 
 const Footer = () => {
     return (
-        <footer className="min-w-[375px] w-full bg-black text-white border-t border-white/10 mt-auto">
+        <footer className="min-w-[375px] w-full bg-[#131313] text-white border-t border-white/10 mt-auto">
             <div className="w-full max-w-[1200px] mx-auto px-6 sm:px-10 py-12 grid grid-cols-2 sm:grid-cols-3 gap-10 justify-items-center text-center">
 
                 <div className="flex flex-col items-center gap-4">
