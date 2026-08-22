@@ -20,9 +20,9 @@ const Contact = () => {
     .from('.map-card', {
       x: -60,
       autoAlpha: 0,
-      duration:1.5,
-      ease: "expo.out",
-    }, "-=0.2")
+      duration:1.0,
+      ease: "power2.out",
+    }, "-=0.1")
     .from('.info-card', {
       x: 60,
       autoAlpha: 0,

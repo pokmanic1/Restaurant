@@ -468,7 +468,7 @@ const CategorieMeniuPage = () => {
         {categorie.tipuri.map((preparat) => (
           <div
             key={preparat.nume}
-            className='card group col-center w-full rounded-2xl overflow-hidden bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl transition-all duration-300 hover:border-white/20 hover:bg-white/10 hover:shadow-lg p-4'
+            className='card group col-center w-full rounded-2xl overflow-hidden bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl  hover:border-white/20 hover:bg-white/10 hover:shadow-lg p-4'
           >
             <div className='relative w-full h-[180px] sm:h-[200px] rounded-xl overflow-hidden mb-4 bg-slate-900/40'>
               <img

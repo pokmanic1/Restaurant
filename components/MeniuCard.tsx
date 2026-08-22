@@ -18,14 +18,14 @@ export const MenuCard = ({
     order,
     isActive,
     isVisible,
-}: MenuCardProps)=> {
+}: MenuCardProps) => {
     return (
         <div
             style={{ order }}
-            className={`card col-center w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-white/5 text-white border border-gray-700 rounded-lg px-2 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6 shadow-2xl hover:border-white/20 hover:bg-white/10 transition-all duration-300
-        ${isVisible ? 'flex' : 'hidden'}
-        ${isActive ? 'scale-105 z-10' : 'scale-75 opacity-70'}`}
-        >
+            className={`card col-center w-[170px] sm:w-[220px] md:w-[270px] lg:w-[320px] bg-white/5 text-white border border-gray-700 rounded-lg px-1 py-3 sm:px-3 sm:py-4 md:px-4 md:py-5 lg:px-5 lg:py-6 shadow-2xl hover:border-white/20 hover:bg-white/10
+                ${isVisible ? 'flex' : 'hidden'}
+                ${isActive ? 'scale-105 z-10' : 'scale-75 opacity-70'}`}
+                >
             <h2 className="text-lg sm:text-xl md:text-2xl font-serif tracking-wide mb-4">
                 {title}
             </h2>

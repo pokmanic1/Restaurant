@@ -187,7 +187,7 @@ export default function Home() {
               hai să te convingem cu gustul.
             </p>
             <div className="w-full flex-center">
-              <BlueButon link="/contact" continut="Contactează-ne" />
+              <BlueButon link="/contact" continut="Vezi detalii" />
             </div>
           </div>
         </div>
