@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 
 const Loading = () => {
@@ -8,12 +9,12 @@ const Loading = () => {
         
         <div className="absolute w-24 h-24 bg-purple-500/20 rounded-full blur-xl pointer-events-none" />
 
-        <div className="relative w-14 h-14 mb-6">
-          <div className="absolute inset-0 rounded-full border-4 border-white/10" />
-          <div className="absolute inset-0 rounded-full border-4 border-white border-t-transparent " />
+     
+    
+        <div className="relative w-20 h-20">
+          <div className="absolute inset-0 rounded-full border-6 border-white/10"></div>
+          <div className="absolute inset-0 rounded-full border-6 border-white/90 border-t-transparent animate-spin"></div>
         </div>
-
-        
 
       </div>
 
