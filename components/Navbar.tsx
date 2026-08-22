@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className=" min-w-[375px] w-full flex justify-between items-center sticky top-0 z-50 bg-black h-[60px] px-10">
+      <nav className=" min-w-[375px] w-full flex justify-between items-center sticky top-0 z-50 bg-[#1e1e1e] h-[60px] px-10">
 
         <Link href='/' className="logo relative w-12 h-12">
           <Image

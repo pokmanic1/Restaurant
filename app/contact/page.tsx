@@ -59,20 +59,20 @@ const Contact = () => {
 
           <div className="info-card group rounded-xl border border-white/10 bg-white/5 backdrop-blur-md p-6 text-white transition-colors duration-300 hover:border-white/20 hover:bg-white/10 hover:shadow-lg">
             <h3 className="text-xl font-semibold tracking-wide text-white/90 group-hover:text-white">Adresa</h3>
-            <p className="mt-2 text-sm text-slate-300">Main Street 123, Block B</p>
-            <p className="text-sm text-slate-400">Prague, Czech Republic</p>
+            <p className="mt-2 text-sm text-slate-300">Strada x </p>
+            <p className="text-sm text-slate-400"> Republic Moldova,cahul</p>
           </div>
 
           <div className="info-card group rounded-xl border border-white/10 bg-white/5 backdrop-blur-md p-6 text-white transition-colors duration-300 hover:border-white/20 hover:bg-white/10 hover:shadow-lg">
             <h3 className="text-xl font-semibold tracking-wide text-white/90 group-hover:text-white">Social media</h3>
-            <p className="mt-2 text-sm text-slate-300">@yourcompany_official</p>
+            <p className="mt-2 text-sm text-slate-300">abcd@gmail.com</p>
             <p className="text-sm text-slate-400">Facebook • Instagram • LinkedIn</p>
           </div>
 
           <div className="info-card group rounded-xl border border-white/10 bg-white/5 backdrop-blur-md p-6 text-white transition-colors duration-300 hover:border-white/20 hover:bg-white/10 hover:shadow-lg">
             <h3 className="text-xl font-semibold tracking-wide text-white/90 group-hover:text-white">Telefon</h3>
-            <p className="mt-2 text-sm text-slate-300">+420 123 456 789</p>
-            <p className="text-sm text-slate-400">Mon - Fri: 8:00 - 17:00</p>
+            <p className="mt-2 text-sm text-slate-300">+373 123 456 789</p>
+            <p className="text-sm text-slate-400">Luni - Duminica: 8:00 - 17:00</p>
           </div>
 
         </div>
